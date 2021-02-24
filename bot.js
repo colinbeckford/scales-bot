@@ -117,7 +117,7 @@ client.on('message', msg => {
         msg.react('❤')
     }
     else if (msg.content == "!tech") {
-        msg.channel.send(getTechRank())
+        msg.channel.send(authorize(JSON.parse(content), getTechRank));
     }
     else if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
         modUser(msg.member)
