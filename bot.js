@@ -17,12 +17,16 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // time.
 const TOKEN_PATH = 'token.json';
 
+function load() {
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), getTechRank);
-});
+    if (err) return console.log('Error loading client secret file:', err);
+    // Authorize a client with credentials, then call the Google Sheets API.
+    var rank = authorize(JSON.parse(content), getTechRank);
+    console.log(rank);
+  });
+}
+
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -117,7 +121,7 @@ client.on('message', msg => {
         msg.react('❤')
     }
     else if (msg.content == "!tech") {
-        msg.channel.send(authorize(JSON.parse(content), getTechRank));
+        load();
     }
     else if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
         modUser(msg.member)
