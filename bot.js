@@ -38,6 +38,9 @@ client.on('message', msg => {
     if (msg.content === "!schedule") {
         msg.channel.send("3/3 @ 8PM EST - Scales Live hosted by Colin \n 3/5 @ 8PM EST - Scales Hangout in Discord hosted by Mark \n 3/8 @ 8PM EST - Scales Live")
     }
+    if (msg.content === "!registration") {
+        msg.channel.send("https://shop.yoyoexpert.com/products/scales-open-v-march-2021")
+    }
     else if (msg.content == "I love Scales") {
         msg.react('❤')
     }
