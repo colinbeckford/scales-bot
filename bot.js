@@ -20,9 +20,8 @@ client.on("messageDelete", msg => {
 })
 
 client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	if (!message.content.startsWith(BOT_PREFIX) || message.author.bot) return;
+	const args = message.content.slice(BOT_PREFIX.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
 	if (command === '!stream') {
