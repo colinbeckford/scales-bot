@@ -32,6 +32,12 @@ client.on('message', msg => {
     if (msg.content === '!ping') {
         msg.channel.send('Pong!')
     }
+    if (msg.content === "!stream") {
+        msg.channel.send("https://www.youtube.com/channel/UCBo-c73ByXx8vG3CEBHjsrQ/live")
+    }
+    if (msg.content === "!schedule") {
+        msg.channel.send("3/3 @ 8PM EST - Scales Live hosted by Colin \n 3/5 @ 8PM EST - Scales Hangout in Discord hosted by Mark \n 3/8 @ 8PM EST - Scales Live")
+    }
     else if (msg.content == "I love Scales") {
         msg.react('❤')
     }
