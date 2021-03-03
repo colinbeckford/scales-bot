@@ -5,8 +5,6 @@ const client = new Discord.Client({
     partials: ["MESSAGE"]
 })
 
-
-
 const BOT_PREFIX = '!'
 const MOD_ME_COMMAND = 'mod'
 
@@ -14,28 +12,24 @@ client.on('ready', () => {
     console.log('Our bot is ready to go!!!')
 })
 
-
 client.on("messageDelete", msg => {
     msg.channel.send("Stop deleting messages")
 })
 
-client.on('message', message => {
-	if (!message.content.startsWith(BOT_PREFIX) || message.author.bot) return;
-	const args = message.content.slice(BOT_PREFIX.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-
-	if (command === '!stream') {
-		message.channel.send('youtube.com/c/scalescollective/live');
-	} else if (command === '!schedule') {
-		message.channel.send('3/3 @ 8PM EST - Scales Live hosted by Colin \n 3/5 @ 8PM EST - Scales Hangout in Discord hosted by Mark \n 3/26-3/28 - Scales Open V');
-	}
-
-	// other commands...
-});
-
+client.on('message', msg => {
+    if (msg.content === '!ping') {
+        msg.channel.send('Pong!')
+    }
+    else if (msg.content == "I love Scales") {
+        msg.react('❤')
+    }
+    else if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
+        modUser(msg.member)
+    }
+})
 
 function modUser(member) {
     member.roles.add("812775078357630977")
 }
 
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN) 
