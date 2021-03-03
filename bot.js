@@ -14,12 +14,6 @@ client.on('ready', () => {
     console.log('Our bot is ready to go!!!')
 })
 
-client.on('message', message => {
-	if (!message.content.startsWith(`${BOT_PREFIX}`) || message.author.bot) return;
-
-    const args = message.content.slice(`${BOT_PREFIX}`.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
-});
 
 client.on("messageDelete", msg => {
     msg.channel.send("Stop deleting messages")
@@ -31,11 +25,12 @@ client.on('message', message => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (command === 'ping') {
-		message.channel.send('Pong.');
-	} else if (command === 'beep') {
-		message.channel.send('Boop.');
+	if (command === '!stream') {
+		message.channel.send('youtube.com/c/scalescollective/live');
+	} else if (command === '!schedule') {
+		message.channel.send('3/3 @ 8PM EST - Scales Live hosted by Colin \n 3/5 @ 8PM EST - Scales Hangout in Discord hosted by Mark \n 3/26-3/28 - Scales Open V');
 	}
+
 	// other commands...
 });
 
