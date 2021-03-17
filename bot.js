@@ -29,6 +29,9 @@ client.on("messageDelete", msg => {
 })
 
 client.on('message', msg => {
+    if (msg.member === 386241951130976258) {
+        msg.pin()
+    }
     if (msg.content === '!ping') {
         msg.channel.send('Pong!')
     }
